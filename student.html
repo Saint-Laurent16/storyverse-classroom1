@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100d2b"><meta name="description" content="STORYVERSE Student Portal — stories, assignments, schedules, checklists and personal progress.">
+  <title>Student Portal · STORYVERSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal.css"><script type="module" src="portal.js"></script>
+</head>
+<body class="portal-page student-theme" data-portal-role="student">
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="portal-topbar"><a class="logo" href="index.html"><span class="logo-mark">✦</span><span>STORY<span class="logo-accent">VERSE</span></span></a><div class="portal-top-actions"><span class="portal-role-pill"><span>✧</span> STUDENT PORTAL</span><a href="index.html" class="top-home">← Home</a></div></header>
+  <main class="portal-main wrap">
+    <section id="authShell" class="auth-shell">
+      <div class="auth-intro student-auth-intro"><div class="eyebrow">YOUR STORIES · YOUR SPACE</div><h1>Your next<br><em>adventure starts here.</em></h1><p>Find your teacher's tasks, explore 3D storybooks, keep your own checklist, and celebrate your reading progress.</p><div class="auth-perks"><span>✦ Your assigned story adventures</span><span>✦ Your schedule & task checklist</span><span>✦ Your private progress tracker</span></div><div class="auth-art student-auth-art"><div class="auth-art-orbit"></div><div class="auth-art-symbol">✧</div><span class="auth-art-star">✦</span></div></div>
+      <section class="auth-card"><div class="auth-card-heading"><span class="auth-small-label">STUDENT ACCOUNT</span><h2>Ready to <em>explore?</em></h2><p>Sign in, or create an account and join your teacher's class.</p></div>
+        <div id="authMessage" class="message-box" role="status" aria-live="polite" hidden></div>
+        <div class="auth-tabs"><button type="button" class="auth-tab is-active" data-auth-mode="login">Log in</button><button type="button" class="auth-tab" data-auth-mode="signup">Create account</button></div>
+        <form id="authForm" class="auth-form">
+          <div class="form-field signup-only" hidden><label for="displayName">DISPLAY NAME OR STUDY CODE</label><input id="displayName" name="displayName" maxlength="40" autocomplete="nickname" placeholder="e.g. Reader 007"></div>
+          <div class="form-field"><label for="email">EMAIL ADDRESS</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="form-field"><label for="password">PASSWORD</label><input id="password" name="password" type="password" minlength="8" autocomplete="current-password" required placeholder="At least 8 characters"></div>
+          <div class="form-field signup-only" hidden><label for="inviteCode">CLASSROOM CODE <span class="optional-label">OPTIONAL</span></label><input id="inviteCode" name="inviteCode" maxlength="10" autocomplete="off" placeholder="Enter the code from your teacher"><small>Don't have a code yet? You can join a classroom after creating your account.</small></div>
+          <button id="authSubmit" class="button button-primary button-wide" type="submit">Log in to student portal <span>→</span></button>
+        </form>
+        <p class="auth-bottom-note">Are you a teacher? <a href="teacher.html">Go to the teacher portal →</a></p>
+      </section>
+    </section>
+
+    <section id="dashboardShell" class="dashboard-shell" hidden>
+      <header class="dashboard-header"><div><div class="eyebrow">YOUR STUDENT SPACE</div><h1>Hey, <em id="userDisplayName">explorer</em>! ✨</h1><p>Here's your reading journey at a glance.</p></div><div class="dashboard-header-actions"><span class="signed-in-chip"><i></i> Signed in</span><button class="button button-outline" id="signOut">Log out ↗</button></div></header>
+      <div id="dashMessage" class="message-box" role="status" aria-live="polite" hidden></div>
+      <div class="app-layout"><aside class="sidebar student-sidebar"><div class="sidebar-label">MY LEARNING SPACE</div><nav id="sideNav" class="side-nav" aria-label="Student navigation">
+        <button data-view="dashboard" class="side-link is-active"><span>⌂</span> My dashboard</button>
+        <button data-view="stories" class="side-link"><span>▤</span> My stories</button>
+        <button data-view="tasks" class="side-link"><span>✓</span> My tasks</button>
+        <button data-view="schedule" class="side-link"><span>▣</span> My schedule</button>
+        <button data-view="checklist" class="side-link"><span>☑</span> My checklist</button>
+        <button data-view="progress" class="side-link"><span>◴</span> My progress</button>
+        <button data-view="announcements" class="side-link"><span>✧</span> Announcements</button>
+        <button data-view="profile" class="side-link"><span>☺</span> My profile</button>
+      </nav><div class="sidebar-bottom student-sidebar-bottom"><span class="sidebar-spark">✦</span><p>Small steps make<br>big adventures.</p><a href="stories.html">Explore story library ↗</a></div></aside>
+      <section class="dashboard-content"><div id="viewRoot" aria-live="polite"></div></section></div>
+    </section>
+  </main>
+  <footer class="portal-footer wrap"><a href="index.html">STORYVERSE</a><span>Student Portal · Your stories, your space, your pace.</span></footer>
+</body>
+</html>

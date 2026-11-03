@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#100d2b" />
+  <meta name="description" content="STORYVERSE — read, listen, explore and learn inside interactive 3D storybooks." />
+  <title>STORYVERSE — Step Inside a Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="storybook.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="STORYVERSE home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>STORY<span class="brand-accent">VERSE</span></span>
+    </a>
+    <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#library" class="nav-link">Explore Stories</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#progress" class="nav-link">My Progress</a>
+      <a href="./student.html" class="nav-link classroom-nav-link">Student Portal</a>
+      <button class="nav-scan" id="navScan"><span class="scan-dot"></span> Scan QR</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT ADVENTURE STARTS HERE</div>
+        <h1>Stories are better<br />when you <em>step inside.</em></h1>
+        <p class="hero-description">Scan. Explore. Discover. Jump into amazing story worlds with 3D characters, sounds, and surprises in every scene.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="heroScan"><span class="button-icon">⌗</span> SCAN A STORY QR</button>
+          <a class="button button-secondary" href="#library">BROWSE STORYBOOKS <span>↗</span></a>
+          <a class="button classroom-hero-button" href="./student.html">STUDENT PORTAL <span>→</span></a><a class="button button-secondary" href="./teacher.html">TEACHER PORTAL <span>→</span></a>
+        </div>
+        <div class="hero-features">
+          <div class="feature-chip"><span class="feature-icon">✦</span><span><b>3 scenes</b><small>per story</small></span></div>
+          <div class="feature-chip"><span class="feature-icon cyan">◈</span><span><b>Interactive 3D</b><small>animation</small></span></div>
+          <div class="feature-chip"><span class="feature-icon pink">♫</span><span><b>Audio + music</b><small>in every world</small></span></div>
+        </div>
+      </div>
+      <div class="hero-art-wrap" aria-label="A magical open storybook with a glowing fantasy world rising from its pages">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-star star-a">✦</div><div class="hero-star star-b">✧</div><div class="hero-star star-c">✦</div>
+        <div class="hero-moon"></div>
+        <div class="hero-book">
+          <div class="book-glow"></div>
+          <div class="book-spine"></div>
+          <div class="book-page page-left"><div class="page-lines"></div></div>
+          <div class="book-page page-right"><div class="page-lines lines-right"></div></div>
+          <div class="book-ribbon"></div>
+          <div class="book-world">
+            <div class="world-tree tree-left"><i></i><b></b></div>
+            <div class="world-tree tree-right"><i></i><b></b></div>
+            <div class="world-hill hill-back"></div><div class="world-hill hill-front"></div>
+            <div class="world-door"><span></span></div>
+            <div class="world-spark spark-one">✧</div><div class="world-spark spark-two">✦</div>
+            <div class="world-character"><div class="character-head"><i></i><b></b></div><div class="character-body"></div><div class="character-cape"></div></div>
+          </div>
+        </div>
+        <div class="floating-note note-scenes"><span>✦</span><b>3 magical scenes</b></div>
+        <div class="floating-note note-audio"><span>♫</span><b>Listen & explore</b></div>
+        <div class="hero-caption"><span class="caption-pulse"></span> A WHOLE NEW WORLD IS WAITING</div>
+      </div>
+      <div class="hero-bottom-note"><span>SCROLL TO EXPLORE</span><span class="down-arrow">↓</span></div>
+    </section>
+
+    <section class="section-shell library-section" id="library">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> CHOOSE YOUR ADVENTURE</div><h2>Find your next <em>story.</em></h2><p>Every book is a new world. Pick one and start exploring.</p></div>
+        <div class="library-count"><span class="count-number" id="storyCount">03</span><span>WORLDS<br />TO EXPLORE</span></div>
+      </div>
+      <div class="story-grid" id="storyGrid" aria-live="polite">
+        <div class="loading-card">Preparing your story worlds…</div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how">
+      <div class="section-shell">
+        <div class="section-heading centered-heading"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR STORY, YOUR WAY</div><h2>Three steps. <em>One big adventure.</em></h2><p>Reading becomes an experience when you can see, hear, and interact with the story.</p></div>
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">01</div><div class="step-visual qr-visual"><div class="mini-qr"><i></i><i></i><i></i><b></b></div><span class="visual-beam"></span></div><h3>Scan or choose</h3><p>Scan a story’s QR code or pick a book from the library.</p></article>
+          <article class="step-card"><div class="step-number">02</div><div class="step-visual explore-visual"><div class="mini-planet"></div><div class="mini-character">✦</div><div class="mini-orbit"></div></div><h3>Step inside</h3><p>Explore three animated scenes. Read, listen, and tap objects to discover clues.</p></article>
+          <article class="step-card"><div class="step-number">03</div><div class="step-visual learn-visual"><div class="mini-score">✓<small>5 / 5</small></div><div class="mini-stars">✦ ✦ ✦</div></div><h3>Show what you know</h3><p>Complete a short comprehension quiz and track your reading progress.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="progress-section section-shell" id="progress">
+      <div class="section-heading progress-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR READING JOURNEY</div><h2>Look how far <em>you’ve come.</em></h2><p>Your progress is saved on this device. Use a nickname or study code—no account needed.</p></div><div class="profile-edit"><label for="studentName">YOUR DISPLAY NAME</label><div class="name-input-wrap"><input id="studentName" type="text" maxlength="24" placeholder="Story explorer" autocomplete="nickname" /><button id="saveName" aria-label="Save display name">✓</button></div></div></div>
+      <div class="progress-overview">
+        <div class="stat-card"><span class="stat-icon violet">▣</span><strong id="statStories">0</strong><small>STORIES COMPLETED</small></div>
+        <div class="stat-card"><span class="stat-icon cyan">✦</span><strong id="statScenes">0</strong><small>SCENES EXPLORED</small></div>
+        <div class="stat-card"><span class="stat-icon pink">◎</span><strong id="statAverage">—</strong><small>AVERAGE QUIZ SCORE</small></div>
+      </div>
+      <div class="progress-lower">
+        <div class="progress-panel"><div class="panel-title"><div><span class="panel-kicker">KEEP GOING</span><h3>Story progress</h3></div><span class="panel-sparkle">✧</span></div><div id="storyProgressList" class="story-progress-list"><p class="empty-note">Your adventures will appear here. Choose a story to begin!</p></div></div>
+        <div class="progress-panel recent-panel"><div class="panel-title"><div><span class="panel-kicker">YOUR RESULTS</span><h3>Recent quiz scores</h3></div><span class="panel-sparkle">✧</span></div><div id="recentResults" class="recent-results"><p class="empty-note">No quiz results yet. Finish a story to see your score.</p></div></div>
+      </div>
+    </section>
+
+    <section class="research-note section-shell">
+      <div class="research-icon">✧</div><div><span class="panel-kicker">MADE FOR CURIOUS MINDS</span><h3>Read more. Understand more. Imagine more.</h3><p>STORYVERSE is a learning experience designed to support English reading comprehension through storytelling, audio, interactive exploration, and reflection.</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell"><a class="brand footer-brand" href="#home"><span class="brand-mark"><span></span><span></span><span></span></span><span>STORY<span class="brand-accent">VERSE</span></span></a><p>Every page is a portal. Every reader is an explorer.</p><div class="footer-links"><a href="#library">Stories</a><a href="#how">How it works</a><a href="./teacher.html">Teacher Portal</a><a href="./student.html">Student Portal</a><button id="openEditor">Editor studio</button></div><small>© <span id="yearNow"></span> STORYVERSE · A reading adventure</small></footer>
+
+  <!-- Story experience -->
+  <div class="modal-shell" id="storyModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="story"></div>
+    <section class="story-modal" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+      <div class="story-topbar"><button class="icon-button" id="closeStory" aria-label="Close story">✕</button><div class="story-top-center"><span class="top-kicker">STORY EXPERIENCE</span><h2 id="storyTitle">Story title</h2></div><button class="icon-button sound-toggle" id="musicToggle" aria-label="Toggle story ambience" title="Story ambience: gentle environment sounds">♫</button></div>
+      <div class="story-body">
+        <div class="scene-side">
+          <div class="scene-badge"><span class="live-dot"></span><span id="sceneCounter">SCENE 1 OF 3</span></div>
+          <div class="scene-stage" id="sceneStage"><div class="stage-loading"><span class="loader-orb"></span><p>Opening your story world…</p></div></div>
+          <div class="stage-hint"><span>↔</span> Drag to look around <i>·</i> Tap glowing objects to discover</div>
+          <div class="ar-row"><button class="button ar-button" id="arLaunch">◎ TRY AR VIEW</button><span id="arSupportLabel">3D view is ready</span></div>
+        </div>
+        <div class="reading-side">
+          <div class="scene-progress-head"><span>YOUR JOURNEY</span><b id="sceneProgressText">0 / 3 scenes completed</b></div>
+          <div class="scene-progress-track"><span id="sceneProgressBar"></span></div>
+          <div class="scene-label" id="sceneLabel">THE FIRST CLUE</div>
+          <h3 id="sceneHeading">A world opens</h3>
+          <div class="story-copy" id="storyCopy">Your story text will appear here.</div>
+          <div class="word-help" id="wordHelp"></div>
+          <div class="audio-controls"><div class="audio-main"><button class="audio-play" id="narrationToggle" aria-label="Play narration">▶</button><div><b>Listen to this scene</b><small id="audioStatus">Narration is ready</small></div></div><div class="audio-options"><label for="speechRate">Speed</label><select id="speechRate"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select><button id="pronounceButton" class="text-control">🔊 Pronounce a word</button></div></div>
+          <div class="story-foot"><span class="tap-tip">✧ Take your time. You move the story forward.</span><button class="button button-primary next-scene" id="nextScene">NEXT SCENE <span>→</span></button></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- QR scanner -->
+  <div class="modal-shell" id="scannerModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="scanner"></div>
+    <section class="simple-modal scanner-modal" role="dialog" aria-modal="true" aria-labelledby="scannerTitle">
+      <button class="icon-button modal-close" id="closeScanner" aria-label="Close scanner">✕</button>
+      <div class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR STORY</div><h2 id="scannerTitle">Scan a <em>story QR.</em></h2><p class="modal-intro">Point your camera at a STORYVERSE code. We’ll open the matching book automatically.</p>
+      <div id="qr-reader" class="qr-reader"></div><div id="scannerStatus" class="scanner-status">Camera access starts only when you tap the button.</div>
+      <div class="scanner-actions"><button class="button button-primary" id="startScanner">START CAMERA</button><label class="button button-secondary upload-qr">UPLOAD QR IMAGE<input id="qrImageInput" type="file" accept="image/*" /></label></div>
+      <button class="text-control scan-demo" id="openFirstStory">Or open Anansi’s Web as a demo →</button>
+    </section>
+  </div>
+
+  <!-- Comprehension quiz -->
+  <div class="modal-shell" id="quizModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <section class="simple-modal quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+      <div class="quiz-orbit">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> ADVENTURE COMPLETE</div><h2 id="quizTitle">You made it through!</h2><p class="modal-intro" id="quizIntro">Let’s see what you discovered along the way.</p>
+      <div class="quiz-progress-head"><span id="quizQuestionCounter">QUESTION 1 OF 5</span><span id="quizProgressLabel">20%</span></div><div class="quiz-progress"><span id="quizProgressBar"></span></div>
+      <div id="quizContent" class="quiz-content"></div><div class="quiz-actions"><button class="button button-primary" id="quizNext" disabled>CHECK ANSWER</button></div>
+      <div id="quizResult" class="quiz-result" hidden></div>
+    </section>
+  </div>
+
+  <!-- Editor -->
+  <div class="modal-shell" id="editorModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="editor"></div>
+    <section class="simple-modal editor-modal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <button class="icon-button modal-close" id="closeEditor" aria-label="Close editor">✕</button><div class="eyebrow"><span class="eyebrow-line"></span> CONTENT WORKSPACE</div><h2 id="editorTitle">Story <em>editor studio.</em></h2><p class="modal-intro">Edit the story text, scene narration, vocabulary, and quiz questions as JSON. Save locally to preview your changes, or export the file to publish it.</p>
+      <div class="editor-notice"><b>How publishing works:</b> “Save preview” changes this browser only. To update the public site for everyone, export <code>stories.json</code> and replace <code>data/stories.json</code> in your website repository.</div>
+      <label class="editor-label" for="editorJson">STORY CONTENT · JSON</label><textarea id="editorJson" class="editor-json" spellcheck="false"></textarea><div class="editor-status" id="editorStatus">Keep the JSON structure intact so the story engine can read it.</div>
+      <div class="editor-actions"><button class="button button-secondary" id="resetEditor">RESET TO ORIGINAL</button><button class="button button-secondary" id="downloadStories">EXPORT JSON</button><button class="button button-primary" id="saveEditor">SAVE PREVIEW</button></div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script nomodule>document.body.innerHTML = '<p style="padding:2rem;color:white">Please open STORYVERSE in a recent browser with JavaScript modules enabled.</p>';</script>
+</body>
+</html>
